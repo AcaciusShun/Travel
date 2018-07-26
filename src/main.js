@@ -5,6 +5,9 @@ import App from './App'
 import router from './router'
 import './assets/styles/reset.css'
 import './assets/styles/border.css' // 解决1px问题
+import './assets/styles/iconfont.css' // 引入iconfont
+
+
 import FastClck from 'fastclick'
 
 Vue.config.productionTip = false
