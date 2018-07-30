@@ -1,8 +1,8 @@
 <template>
 <div class="icons">
   <swiper>
-    <swiper-slide>
-      <div class="icon" v-for="item of iconList" :key="item.id">
+    <swiper-slide v-for="(page, index) of pages" :key="index">
+      <div class="icon" v-for="item of page" :key="item.id">
         <div class="icon-img">
           <img class="icon-img-content" :src="item.imgUrl" alt="">
         </div>
@@ -69,12 +69,26 @@ export default {
           desc: '南浔古镇'
         }]
     }
+  },
+  computed: {
+    pages () {
+      const pages = []
+      this.iconList.forEach((item, index) => {
+        const page = Math.floor(index / 8)
+        if (!pages[page]) {
+          pages[page] = []
+        }
+        pages[page].push(item)
+      })
+      return pages
+    }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
   @import '~styles/varibles.styl'
+  @import "~styles/mixins.styl"
   .icons >>> .swiper-container
     height 0
     padding-bottom 50%
@@ -109,4 +123,6 @@ export default {
       line-height .44rem
       color $darkTextColor
       text-align center
+      //字符省略引用 ↓
+      ellipsis()
 </style>
