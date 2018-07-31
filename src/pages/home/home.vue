@@ -51,10 +51,23 @@ export default {
         this.recommendList = data.recommendList
         this.weekendList = data.weekendList
       }
+    },
+    getCityLisy () {
+      axios.get('/api/city.json')
+        .then(this.getCityListSucc)
+    },
+    getCityListSucc (res) {
+      res = res.data
+      console.log(res)
+      if (res.ret && res.data) {
+        const data = res.data
+        this.city = data.city
+      }
     }
   },
   mounted () {
     this.getHomeInfo()
+    this.getCityLisy()
   }
 }
 </script>
