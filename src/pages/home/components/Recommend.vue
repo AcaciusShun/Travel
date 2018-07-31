@@ -2,7 +2,7 @@
   <div>
     <div class="title">热销推荐</div>
     <ul>
-      <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+      <li class="item border-bottom" v-for="item of list" :key="item.id">
         <img class="item-img" :src="item.imgUrl" alt="">
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
@@ -18,32 +18,11 @@
 <script>
 export default {
   name: 'HomeRecommend',
+  props: {
+    list: Array
+  },
   data () {
     return {
-      recommendList: [{
-        id: '0001',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1603/85/85aa0c000578a01e90.water.jpg_150x150_21259c73.jpg',
-        title: '苏州乐园森林水世界',
-        desc: 'xxxxxxxxxxxxxxxxxxx'
-      },
-      {
-        id: '0002',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1603/85/85aa0c000578a01e90.water.jpg_150x150_21259c73.jpg',
-        title: '苏州乐园森林水世界',
-        desc: 'xxxxxxxxxxxxxxxxxxx'
-      },
-      {
-        id: '0003',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1603/85/85aa0c000578a01e90.water.jpg_150x150_21259c73.jpg',
-        title: '苏州乐园森林水世界',
-        desc: 'xxxxxxxxxxxxxxxxxxx'
-      },
-      {
-        id: '0004',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1603/85/85aa0c000578a01e90.water.jpg_150x150_21259c73.jpg',
-        title: '苏州乐园森林水世界',
-        desc: 'xxxxxxxxxxxxxxxxxxx'
-      }]
     }
   }
 }
