@@ -53,7 +53,6 @@ export default {
   @import "~styles/mixins.styl"
 
   .title
-    margin-top .2rem
     line-height .8rem
     background #ccc
     text-indent .2rem
