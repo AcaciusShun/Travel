@@ -40,9 +40,9 @@ export default {
         .then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc (res) {
-      console.log(res)
+      // console.log(res)
       res = res.data
-      console.log(res)
+      // console.log(res)
       if (res.ret && res.data) {
         const data = res.data
         this.city = data.city
@@ -58,7 +58,7 @@ export default {
     },
     getCityListSucc (res) {
       res = res.data
-      console.log(res)
+      // console.log(res)
       if (res.ret && res.data) {
         const data = res.data
         this.city = data.city
