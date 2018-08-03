@@ -22,8 +22,13 @@ export default {
   },
   data () {
     return {
-      touchStatus: false // 标识位
+      touchStatus: false, // 标识位
+      startY: 0,
+      timer: null
     }
+  },
+  updated () {
+    this.startY = this.$refs['A'][0].offsetTop
   },
   computed: {
     letters () {
@@ -44,17 +49,22 @@ export default {
       this.touchStatus = true
     },
     handleTouchMove (e) {
+      // 函数截流 性能优化：清除一定时间内的上次操作 重新执行
       if (this.touchStatus) {
-        const startY = this.$refs['A'][0].offsetTop
-        // console.log(startY)
-        const touchY = e.touches[0].clientY - 79 // 手指触摸高度减去top header search 高度
-        // console.log(touchY)
-        const index = Math.floor((touchY - startY) / 20) // 滑动位置 字母下标
-        console.log(index)
-        if (index >= 0 && index < this.letters.length) {
-          this.$emit('change', this.letters[index])
-          console.log(index)
+        if (this.timer) {
+          clearTimeout(this.timer)
         }
+        this.timer = setTimeout(() => {
+          // const startY = this.$refs['A'][0].offsetTop
+          // console.log(startY)
+          const touchY = e.touches[0].clientY - 79 // 手指触摸高度减去top header search 高度
+          // console.log(touchY)
+          const index = Math.floor((touchY - this.startY) / 20) // 滑动位置 字母下标
+          console.log(index)
+          if (index >= 0 && index < this.letters.length) {
+            this.$emit('change', this.letters[index])
+          }
+        }, 16)
       };
     },
     handleTouchEnd () {
