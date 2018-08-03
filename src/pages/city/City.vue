@@ -34,7 +34,7 @@ export default {
         .then(this.handleGetCityInfoSucc)
     },
     handleGetCityInfoSucc (res) {
-      console.log(res)
+      // console.log(res)
       res = res.data
       console.log(res)
       if (res.ret && res.data) {
