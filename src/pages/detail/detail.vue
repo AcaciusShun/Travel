@@ -1,20 +1,29 @@
 <template>
   <div>
-    <detail-banner :sightName="sightName"
-                   :bannerImg="bannerImg"
-                   :bannerImgs="gallaryImgs">
-
-    </detail-banner>
+    <detail-banner
+      :sightName="sightName"
+      :bannerImg="bannerImg"
+      :bannerImgs="gallaryImgs"
+    ></detail-banner>
+    <detail-header></detail-header>
+    <div class="content">
+      <detail-list :list="list"></detail-list>
+    </div>
   </div>
 </template>
 
 <script>
-import DetailBanner from './comments/banner'
+import DetailBanner from './components/banner'
+import DetailHeader from './components/Header'
+import DetailList from './components/List'
 import axios from 'axios'
+
 export default {
   name: 'Detail',
   components: {
-    DetailBanner
+    DetailBanner,
+    DetailHeader,
+    DetailList
   },
   data () {
     return {
@@ -49,4 +58,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+  .content
+    height: 50rem
+</style>
